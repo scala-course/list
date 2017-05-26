@@ -5,17 +5,12 @@ import scala.annotation.tailrec
 
 object ListExercises {
 
-
   def removeDuplicates(l: List[Symbol]): List[Symbol] = {
-    @tailrec
-    def remove(lCurrent: List[Symbol], lAcum: List[Symbol]): List[Symbol] = {
-      if (lCurrent.isEmpty) lAcum
-      else remove(
-        lCurrent.tail,
-        if (lCurrent.tail.nonEmpty && lCurrent.head.eq(lCurrent.tail.head)) lAcum
-        else lAcum ::: List(lCurrent.head))
-    }
-    remove(l, List[Symbol]())
+    var finalList = List[Symbol]()
+    separateInDuplicates(l).foreach(a => {
+      finalList = finalList ::: List(a.head)
+    })
+    finalList
   }
 
   def separateInDuplicates(l: List[Symbol]): List[List[Symbol]] = {
