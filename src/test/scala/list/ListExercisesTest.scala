@@ -45,8 +45,9 @@ class ListExercisesTest extends FlatSpec with Matchers {
     sumOdd(List(2, 4, 6, 8)) should be(0)
   }
 
-
   it should "Pack consecutive duplicates of list elements into sublists." in {
+    separateInDuplicates(List(1, 1, 1, 2, 2, 3, 1, 5, 5, 3, 3)) should be (List(List(1,1,1), List(2,2), List(3), List(1), List(5,5), List(3,3)))
+    separateInDuplicates(List(1,2, 3, 3, 3, 3)) should be (List(List(1), List(2), List(3,3,3,3)))
     separateInDuplicates(List('a, 'a, 'b, 'b, 'a, 'a)) should be (List(List('a, 'a), List('b, 'b), List('a, 'a)))
     separateInDuplicates(List('a, 'b, 'c, 'c, 'c, 'c)) should be (List(List('a), List('b), List('c, 'c, 'c, 'c)))
   }

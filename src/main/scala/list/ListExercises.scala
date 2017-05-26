@@ -5,17 +5,17 @@ import scala.annotation.tailrec
 
 object ListExercises {
 
-  def removeDuplicates(l: List[Symbol]): List[Symbol] = {
-    var finalList = List[Symbol]()
-    separateInDuplicates(l).foreach(a => {
+  def removeDuplicates[Z](list: List[Z]): List[Z] = {
+    var finalList = List[Z]()
+    separateInDuplicates(list).foreach(a => {
       finalList = finalList ::: List(a.head)
     })
     finalList
   }
 
-  def separateInDuplicates(l: List[Symbol]): List[List[Symbol]] = {
+  def separateInDuplicates[Z](l: List[Z]): List[List[Z]] = {
     @tailrec
-    def add(l: List[Symbol], lTemp: List[List[Symbol]], cont: Int): List[List[Symbol]] = {
+    def add(l: List[Z], lTemp: List[List[Z]], cont: Int): List[List[Z]] = {
       if (l.isEmpty) lTemp
       else if (l.tail.nonEmpty && l.head.equals(l.tail.head)) {
         add(l.tail, lTemp, cont + 1)
@@ -23,23 +23,23 @@ object ListExercises {
         add(l.tail, lTemp ::: List(List.fill(cont + 1)(l.head)), 0)
       }
     }
-    add(l, List[List[Symbol]](), 0)
+    add(l, List[List[Z]](), 0)
   }
 
-  def isPalindrome(l: List[Symbol]): Boolean = {
-    l.reverse.equals(l)
+  def isPalindrome[Z](list: List[Z]): Boolean = {
+    list.reverse.equals(list)
   }
 
-  def duplicate(times: Int, list: List[Symbol]): List[Symbol] = {
-    var lAcum = List[Symbol]()
+  def duplicate[Z](times: Int, list: List[Z]): List[Z] = {
+    var lAcum = List[Z]()
     list.foreach(a => {
       lAcum = lAcum ::: List.fill(times)(a)
     })
     lAcum
   }
 
-  def reverse(list: List[Symbol]): List[Symbol] = {
-    var lAcum = List[Symbol]()
+  def reverse[Z](list: List[Z]): List[Z] = {
+    var lAcum = List[Z]()
     list.foreach(a => {
       lAcum = List(a) ::: lAcum
     })
