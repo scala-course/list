@@ -41,7 +41,7 @@ object ListExercises {
   def reverse[Z](list: List[Z]): List[Z] = {
     var lAcum = List[Z]()
     list.foreach(a => {
-      lAcum = List(a) ::: lAcum
+      lAcum = a :: lAcum
     })
     lAcum
   }
@@ -50,9 +50,9 @@ object ListExercises {
     @tailrec
     def add(list: List[Z], listResult:List[Z]):List[Z] = {
       if(list.isEmpty)  listResult
-      else add(list.tail, List(list.head) ::: listResult)
+      else add(list.tail,  list.head :: listResult)
     }
-    add(list, List())
+    add(list, Nil)
   }
 
   def sumOdd(list: List[Int]): Int = {
