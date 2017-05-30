@@ -46,6 +46,14 @@ object ListExercises {
     lAcum
   }
 
+  def reverseTailRec[Z](list: List[Z]):List[Z]= {
+    def add(list: List[Z], listResult:List[Z]):List[Z] = {
+      if(list.isEmpty)  listResult
+      else add(list.tail, List(list.head) ::: listResult)
+    }
+    add(list, List())
+  }
+
   def sumOdd(list: List[Int]): Int = {
     list.filter(_ % 2 != 0).sum
   }

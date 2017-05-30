@@ -39,6 +39,12 @@ class ListExercisesTest extends FlatSpec with Matchers {
     reverse(List('f, 'a, 'b, 'i, 'a, 'n)) should be (List('n, 'a, 'i, 'b, 'a, 'f))
   }
 
+  it should "Get reverse array without scala reverse function(tail rec)" in {
+    reverseTailRec(List('a, 'b, 'c, 'd)) should be (List('d, 'c, 'b, 'a))
+    reverseTailRec(List('f, 'a, 'b, 'i, 'a, 'n)) should be (List('n, 'a, 'i, 'b, 'a, 'f))
+  }
+
+
   it should "Sum all odd numbers and return result" in {
     sumOdd(List(1, 2, 3, 4)) should be(4)
     sumOdd(List(1, 1, 1, 1, 1, 1, 1)) should be(7)
