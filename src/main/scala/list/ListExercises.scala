@@ -47,6 +47,7 @@ object ListExercises {
   }
 
   def reverseTailRec[Z](list: List[Z]):List[Z]= {
+    @tailrec
     def add(list: List[Z], listResult:List[Z]):List[Z] = {
       if(list.isEmpty)  listResult
       else add(list.tail, List(list.head) ::: listResult)
